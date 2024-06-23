@@ -1,0 +1,120 @@
+.navbar {
+    height: 65px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #E0E0E0;
+    position: fixed;
+}
+
+.navContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 600;
+    font-size: 25px;
+    color: #121417;
+    margin-left: 40px;
+}
+
+.navList {
+
+    margin-right: 30px;
+    justify-content: space-between;
+
+}
+
+/* Navigation User Section */
+.navUser {
+    position: relative;
+    margin-left: 20px;
+}
+
+/* Username */
+.navUsername {
+    font-size: 1rem;
+    color: #3BA1E3;
+    cursor: pointer;
+}
+
+.navUsername:hover {
+    text-decoration: underline;
+}
+
+/* Dropdown Menu */
+.dropdownMenu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 1000;
+    background-color: #F0F2F5;
+    border: 1px solid #F0F2F5;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    min-width: 120px;
+}
+
+/* Dropdown Item */
+.dropdownItem {
+    padding: 10px;
+    font-size: 0.875rem;
+    color: #495057;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdownItem:hover {
+    background-color: #3BA1E3;
+    color: #F0F2F5;
+}
+
+.navItems {
+    display: flex;
+    align-items: center;
+    margin-right: 40px;
+    justify-content: space-between;
+
+}
+
+.navItem {
+    margin-left: 60px;
+    font-weight: 300;
+    font-size: 15px;
+    color: #121417;
+    cursor: pointer;
+    text-decoration: none !important;
+    ;
+}
+
+.navItem:hover {
+    text-decoration: none;
+    font-weight: 400;
+
+    /* Ensures no underline on hover */
+}
+
+
+.navButton {
+    margin-left: 20px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    border-radius: 20px;
+    width: 84px;
+    height: 40px;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.navButton:active,
+.navButton:focus {
+    outline: none;
+    /* Remove focus outline */
+}

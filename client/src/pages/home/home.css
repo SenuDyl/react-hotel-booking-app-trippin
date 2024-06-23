@@ -1,0 +1,15 @@
+/* Home Component Container */
+.home-container {
+    position: relative;
+    /* Ensure relative positioning for z-index to work */
+}
+
+/* Searchbar Container */
+.searchbar-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    /* Adjust z-index value to ensure it's above other elements */
+}

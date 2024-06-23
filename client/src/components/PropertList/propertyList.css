@@ -1,0 +1,74 @@
+.pDetails {
+    position: relative;
+    margin-top: 30px;
+    margin-left: 195px;
+    margin-right: 195px;
+    margin-bottom: 30px;
+}
+
+.pHeader {
+    display: flex;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+.pList {
+    display: flex;
+    width: 100%;
+    max-width: 1024px;
+    justify-content: space-between;
+    gap: 20px;
+
+}
+
+.pListItem {
+    position: relative;
+    color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 250px;
+    flex: 1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Add shadow for tile effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Smooth transition for hover effect */
+}
+
+.pListItem:hover {
+    transform: translateY(-5px);
+    /* Lift the tile slightly on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    /* Enhance shadow on hover */
+}
+
+.pListImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    /* Ensure the image has rounded corners */
+}
+
+.pListTitles {
+    color: white;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    /* Add shadow to text for better readability */
+}
+
+.pListTitles>h1 {
+    font-size: 18px;
+    text-transform: capitalize;
+    margin: 0;
+    /* Remove default margin */
+}
+
+.pListTitles>h2 {
+    font-size: 14px;
+    font-weight: 300;
+    margin: 0;
+    /* Remove default margin */
+}

@@ -1,0 +1,88 @@
+.propertyDetails {
+    position: relative;
+    margin-left: 195px;
+    margin-right: 195px;
+    margin-top: 30px;
+}
+
+.propertyHeader {
+    display: flex;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+.propertyList {
+    display: flex;
+    width: 100%;
+    max-width: 1024px;
+    justify-content: flex-start;
+    gap: 20px;
+    overflow-x: hidden;
+    /* Changed to hide horizontal scrollbar */
+    padding-bottom: 10px;
+    /* Padding to ensure scrollbar doesn't overlap content */
+}
+
+.propertyListItem {
+    position: relative;
+    border-radius: 10px;
+    height: 300px;
+    /* Increased height for better visual balance */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Tile shadow */
+    transition: transform 0.3s, box-shadow 0.3s;
+    /* Smooth transitions */
+    background-color: #F0F2F5;
+    /* White background for the tile */
+    display: flex;
+    flex-direction: column;
+    /* Stack image and text vertically */
+    overflow: hidden;
+    /* Hide overflow to maintain the border-radius */
+    width: 300px;
+    /* Fixed width for each card */
+    flex-shrink: 0;
+    /* Prevent shrinking when flexbox adjusts */
+    margin-bottom: 20px;
+    /* Margin at the bottom for spacing when wrapping */
+}
+
+.propertyListItem:hover {
+    transform: translateY(-10px);
+    /* Lift effect on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    /* Enhanced shadow on hover */
+}
+
+.propertyListImg {
+    width: 100%;
+    height: 200px;
+    /* Fixed height for the image */
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+    /* Rounded top corners */
+}
+
+.propertyListTitles {
+    padding: 10px;
+    /* Padding around the text */
+    text-align: center;
+    /* Center-align the text */
+    color: #444;
+}
+
+.propertyListTitles>h2 {
+    margin-top: 10px;
+    font-size: 18px;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+.propertyListTitles>h3 {
+    font-size: 14px;
+    font-weight: 300;
+    margin-top: 1px;
+    text-transform: capitalize;
+    /* Slight margin between h2 and h3 */
+}

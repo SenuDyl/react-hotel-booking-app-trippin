@@ -1,0 +1,112 @@
+.searchItem {
+    border: 2px solid lightgray;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    width: 65vw;
+    margin: 0 auto;
+    /* Center the element horizontally */
+    height: 275px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.searchItem:hover {
+    transform: translateY(-5px);
+}
+
+.hotelImg {
+    flex: 1;
+}
+
+.hotelImg img {
+    width: 100%;
+    height: 255px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.siDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    width: 50%;
+}
+
+.hotelTitle {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+}
+
+.hotelLocation {
+    font-size: 1.2em;
+    color: #777;
+    margin: 5px 0;
+    text-transform: capitalize;
+}
+
+.hotelDetails {
+    font-size: 1em;
+    color: #555;
+    margin: 5px 0;
+}
+
+.hotelDesc {
+    font-size: 1em;
+    color: #555;
+    margin: 5px 0;
+}
+
+.hotelOther {
+    font-size: 0.9em;
+    color: #999;
+    margin: 5px 0;
+}
+
+.siSubDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 20%;
+}
+
+.siSubDetailsTop {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: auto;
+}
+
+.hotelPrice {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #e67e22;
+}
+
+.hotelRatings {
+    font-size: 1.6em;
+    color: #27ae60;
+    margin: 5px 0;
+}
+
+.siCheckButton {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.siCheckButton:hover {
+    background-color: #2980b9;
+}

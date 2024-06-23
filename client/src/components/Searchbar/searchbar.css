@@ -1,0 +1,153 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+/* Header Search Container */
+.headerSearch {
+    height: 55px;
+    background-color: #f8f9fa;
+    border: 3px solid #3BA1E3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    border-radius: 30px;
+    position: relative;
+    /* Changed to relative to establish stacking context */
+    left: 50%;
+    margin-top: 5px;
+    transform: translateX(-50%);
+    width: 80vw;
+    max-width: 850px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    z-index: 10;
+    /* Ensure headerSearch has a high z-index */
+}
+
+.headerSearch:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Header Button */
+.headerBtn {
+    background-color: transparent;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 18px;
+    color: #007bff;
+    transition: color 0.3s ease;
+}
+
+.headerBtn:hover {
+    color: #0056b3;
+}
+
+/* Header Icon */
+.headerIcon {
+    color: #007bff;
+    font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+.headerIcon:hover {
+    color: #0056b3;
+}
+
+/* Header Search Item */
+.headerSearchItem {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Header Search Input */
+.headerSearchInput {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: #495057;
+    width: 100%;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+}
+
+.headerSearchInput:focus {
+    background-color: #dee2e6;
+}
+
+/* Header Search Text */
+.headerSearchText {
+    color: #495057;
+    cursor: pointer;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.headerSearchText:hover {
+    color: #495057;
+}
+
+/* Date and Options Containers */
+.dateCategory,
+.optionsCategory {
+    position: absolute;
+    top: 55px;
+    z-index: 1000;
+    /* High z-index to appear in front */
+    background-color: #ffffff;
+    color: #343a40;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    width: fit-content;
+}
+
+/* Option Item */
+.optionItem {
+    width: 220px;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+/* Option Counter */
+.optionCounter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #343a40;
+}
+
+/* Option Counter Button */
+.optionCounterButton {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #007bff;
+    color: #007bff;
+    cursor: pointer;
+    background-color: white;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.optionCounterButton:disabled {
+    cursor: not-allowed;
+    color: #adb5bd;
+    border-color: #adb5bd;
+}
+
+.optionCounterButton:hover:not(:disabled) {
+    background-color: #007bff;
+    color: white;
+}

@@ -1,0 +1,19 @@
+.listItems {
+    margin: 0 auto;
+}
+
+.searchBar {
+    margin-top: 30px;
+    display: flex;
+    margin-bottom: 20px;
+    /* Add this line for gap */
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    margin-bottom: 60px;
+    flex-direction: column;
+    gap: 20px;
+}
