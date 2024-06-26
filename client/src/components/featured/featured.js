@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import './featured.css';
 import useFetch from '../../hooks/useFetch';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const Featured = () => {
     const { data, loading, error } = useFetch("/hotels?featured=true");
@@ -28,7 +30,8 @@ const Featured = () => {
                 <span className="featuredTitle">Popular Among Guests</span>
             </div>
             <div className="featuredListContainer">
-                <button className="arrow left" onClick={scrollLeft}>&#9664;</button>
+                <ArrowBackIosIcon className="arrow left" onClick={scrollLeft} />
+
                 <div className="featuredList" ref={listRef}>
                     {loading ? "Loading" : <>
                         {data.map((item) => (
@@ -49,7 +52,7 @@ const Featured = () => {
                         ))}
                     </>}
                 </div>
-                <button className="arrow right" onClick={scrollRight}>&#9654;</button>
+                <ArrowForwardIosIcon className="arrow right" onClick={scrollRight} />
             </div>
         </div>
     );

@@ -12,6 +12,7 @@ const Reserve = ({ setOpen, hotelId }) => {
     const [selectedRooms, setSelectedRooms] = useState([]);
     const { data, loading, error } = useFetch(`/hotels/room/${hotelId}`);
     const { dates } = useContext(SearchContext);
+    console.log("room data", data);
 
     const getDatesInRange = (startDate, endDate) => {
         const start = new Date(startDate);
@@ -65,8 +66,8 @@ const Reserve = ({ setOpen, hotelId }) => {
                     return res.data;
                 })
             );
-            //setOpen(false);
-            //navigate("/");
+            setOpen(false);
+
         } catch (err) { }
     };
     return (

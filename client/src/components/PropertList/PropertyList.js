@@ -3,7 +3,7 @@ import './propertyList.css'
 import useFetch from '../../hooks/useFetch'
 
 const PropertyList = () => {
-    const { data, loading, error } = useFetch("/hotels/countByCity?cities=berlin,madrid,london,ManHatton")
+    const { data, loading, error } = useFetch("/hotels/countByCity?cities=Yala,Kandy,Negombo,Colombo,Galle,Nuwara Eliya,Ella,Jaffna")
     console.log("data", data)
     return (
         <div className="pDetails">
@@ -12,31 +12,31 @@ const PropertyList = () => {
             </div>
                 <div className="pList">
                     <div className="pListItem">
-                        <img src="https://media.istockphoto.com/id/472899538/photo/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab.jpg?s=612x612&w=0&k=20&c=rz-WSe_6gKfkID6EL9yxCdN_UIMkXUBsr67884j-X9o=" alt="property" className="pListImg" />
+                        <img src="https://media.istockphoto.com/id/803613114/photo/nine-arches-demodara-bridge.jpg?s=612x612&w=0&k=20&c=YaUyiIY5UstbUgQ4q77DU_xhaEJF2MqAYfO59SclkWA=" alt="property" className="pListImg" />
                         <div className="pListTitles">
-                            <h2>Berlin</h2>
-                            <h3>{data[0]} properties</h3>
+                            <h2>Ella</h2>
+                            <h3>{data[6]} properties</h3>
                         </div>
                     </div>
                     <div className="pListItem">
-                        <img src="https://cf.bstatic.com/static/img/theme-index/carousel_320x240/card-image-apartments_300/9f60235dc09a3ac3f0a93adbc901c61ecd1ce72e.jpg" alt="property" className="pListImg" />
+                        <img src="https://media.istockphoto.com/id/1285881901/photo/temple-of-the-sacred-tooth-relic-at-kandy-sri-lanka.jpg?s=612x612&w=0&k=20&c=gqnoXgatwo1Ar_oCYnGnmE3Ts7sn9DvYKPK0n6Mhca8=" alt="property" className="pListImg" />
                         <div className="pListTitles">
-                            <h2>Madrid</h2>
+                            <h2>Kandy</h2>
                             <h3>{data[1]} properties</h3>
                         </div>
                     </div>
                     <div className="pListItem">
-                        <img src="https://cf.bstatic.com/static/img/theme-index/carousel_320x240/card-image-villas_300/dd0d7f8202676306a661aa4f0cf1ffab31286211.jpg" alt="property" className="pListImg" />
+                        <img src="https://holidays.santamonicafly.com/images/Blog/galle.jpg" alt="property" className="pListImg" />
                         <div className="pListTitles">
-                            <h2>London</h2>
-                            <h3>{data[2]} properties</h3>
+                            <h2>Galle</h2>
+                            <h3>{data[4]} properties</h3>
                         </div>
                     </div>
                     <div className="pListItem">
-                        <img src="https://cf.bstatic.com/static/img/theme-index/carousel_320x240/card-image-chalet_300/8ee014fcc493cb3334e25893a1dee8c6d36ed0ba.jpg" alt="property" className="pListImg" />
+                        <img src="https://travelrebels.com/wp-content/uploads/2024/04/tips-voor-nuwara-eliya.jpg" alt="property" className="pListImg" />
                         <div className="pListTitles">
-                            <h2>New York</h2>
-                            <h3>{data[3]} properties</h3>
+                            <h2>Nuwara Eliya</h2>
+                            <h3>{data[5]} properties</h3>
                         </div>
                     </div>
 

@@ -32,7 +32,7 @@
 .featuredListItem {
     position: relative;
     border-radius: 10px;
-    height: 300px;
+    height: 320px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
     background-color: #F0F2F5;
@@ -50,12 +50,12 @@
 
 .featuredListImg {
     width: 100%;
-    height: 200px;
+    height: 170px;
     object-fit: cover;
 }
 
 .featuredListTitles {
-    padding: 10px;
+    padding: 8px;
     text-align: center;
     color: #444;
 }
@@ -67,9 +67,9 @@
 }
 
 .featuredListTitles>h3 {
-    font-size: 14px;
-    font-weight: 300;
-    margin-top: 2px;
+    font-size: 16px;
+    font-weight: 380;
+    margin-top: 1px;
     text-transform: capitalize;
 }
 
@@ -85,7 +85,7 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: #3BA1E3;
+
     border: none;
     border-radius: 50%;
     width: 30px;
@@ -95,15 +95,15 @@
     justify-content: center;
     cursor: pointer;
     z-index: 10;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
 }
 
 .arrow.left {
-    left: -40px;
+    left: -50px;
 }
 
 .arrow.right {
-    right: -40px;
+    right: -50px;
 }
 
 .arrow:disabled {
@@ -116,7 +116,7 @@
     color: white;
     font-weight: bold;
     background-color: #27ae60;
-    padding: 3px 10px;
+    padding: 3px 12px;
     border-radius: 5px;
     margin-right: 10px;
 }
@@ -125,5 +125,6 @@
     font-size: 16px;
     color: #757575;
     display: inline;
+    font-weight: 500;
     margin-top: 5px;
 }

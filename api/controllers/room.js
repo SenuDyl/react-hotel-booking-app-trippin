@@ -2,22 +2,28 @@ import Room from "../models/Room.js";
 import Hotel from "../models/Hotel.js";
 import { createError } from "../utils/error.js";
 
+
 export const createRoom = async (req, res, next) => {
-    const hotelId = req.params.hotelid;
+    const hotelId = req.params.hotelId;
     const newRoom = new Room(req.body);
 
     try {
         const savedRoom = await newRoom.save();
+
+
         try {
-            await Hotel.findByIdAndUpdate(hotelId, {
+            const updatedHotel = await Hotel.findByIdAndUpdate(hotelId, {
                 $push: { rooms: savedRoom._id },
-            });
+            }, { new: true });
+
+
         } catch (err) {
-            next(err);
+            console.error('Error updating hotel with room ID:', err);
+            return next(err);
         }
-        res.status(200).json(savedRoom);
     } catch (err) {
-        next(err);
+        console.error('Error saving new room:', err);
+        return next(err);
     }
 };
 

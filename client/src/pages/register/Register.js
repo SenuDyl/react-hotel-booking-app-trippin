@@ -13,7 +13,7 @@ const Register = () => {
     });
 
     const { loading, error, dispatch } = useContext(AuthContext);
-    const navigate = useNavigate(); // Initialize useHistory hook
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         setCredentials({ ...credentials, [e.target.id]: e.target.value });

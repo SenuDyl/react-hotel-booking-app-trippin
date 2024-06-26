@@ -1,0 +1,52 @@
+.profile-summary {
+    padding: 20px;
+    margin-left: 300px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+
+.list-group-item {
+    background-color: white;
+    /* White background for list items */
+    border: none;
+    /* Remove default list item border */
+    padding: 10px 15px;
+    /* Padding inside list items */
+    margin-bottom: 10px;
+    /* Bottom margin between list items */
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    /* Optional: Box shadow for depth */
+}
+
+.list-group-item span {
+    font-weight: 500;
+    /* Medium font weight for label spans */
+    width: 180px;
+    /* Fixed width for labels (adjust as needed) */
+    display: inline-block;
+    /* Allow span to take up specified width */
+}
+
+.list-group-item h5 {
+    font-weight: 100;
+    /* Medium font weight for label spans */
+    width: calc(100% - 50px);
+    /* Fixed width for labels (adjust as needed) */
+    display: inline-block;
+    /* Allow span to take up specified width */
+    font-size: 1rem;
+
+    margin-left: 70px;
+}
+
+.form-control {
+    width: calc(100% - 50px);
+    /* Adjust input width, leaving space for button */
+}
+
+.btn {
+    white-space: nowrap;
+    /* Prevent button text from wrapping */
+
+}

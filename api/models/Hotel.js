@@ -38,6 +38,10 @@ const hotelSchema = new Schema({
         min: 0,
         max: 5
     },
+    reviews: {
+        type: [String],
+
+    },
     rooms: {
         type: [String],
 

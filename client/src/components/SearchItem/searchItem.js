@@ -22,20 +22,22 @@ const SearchItem = ({ item }) => {
     return (
         <div className='searchItem'>
             <div className='hotelImg'>
-                <img src='https://media.istockphoto.com/id/472899538/photo/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab.jpg?s=612x612&w=0&k=20&c=rz-WSe_6gKfkID6EL9yxCdN_UIMkXUBsr67884j-X9o=' alt='Hotel' />
+                <img src={item.photos[0]} alt='Hotel' />
             </div>
             <div className='siDetails'>
                 <span className='hotelTitle'>{item.name}</span>
-                <span className='hotelLocation'>{item.city}</span>
-                <span className='hotelDetails'>All the items are free</span>
-                <span className='hotelDesc'>{item.desc}</span>
+                <span className='hotelLocation'>{item.address}</span>
+                <span className='hotelDetails'>{item.distance}</span>
+                <span className='hotelDesc'>{item.title}</span>
+
+                <span className='hotelOther'>Free Cancellation</span>
                 <span className='hotelOther'>No additional charges will be added</span>
             </div>
             <div className='siSubDetails'>
                 <span className='hotelPrice'>${item.cheapestPrice} per night</span>
                 {item.rating && <div className='hotelRatings'>
-                    {getStarRating(rating, maxRating)}
-                    <span className='ratingNumber'>({rating})</span>
+                    <div className='stars'>{getStarRating(rating, maxRating)}</div>
+
                 </div>}
                 <Link to={`/hotels/${item._id}`}>
 

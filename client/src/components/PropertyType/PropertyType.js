@@ -1,15 +1,17 @@
 import React, { useRef } from 'react';
 import './PropertyType.css';
 import useFetch from '../../hooks/useFetch';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const PropertyType = () => {
     const { data, loading, error } = useFetch("/hotels/countByType")
     const images = {
-        hotel: "https://media.istockphoto.com/id/472899538/photo/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab.jpg?s=612x612&w=0&k=20&c=rz-WSe_6gKfkID6EL9yxCdN_UIMkXUBsr67884j-X9o=",
-        apartment: "https://cf.bstatic.com/static/img/theme-index/carousel_320x240/card-image-apartments_300/9f60235dc09a3ac3f0a93adbc901c61ecd1ce72e.jpg",
-        resort: "https://cf.bstatic.com/static/img/theme-index/carousel_320x240/bg_resorts/6f87c6143fbd51a0bb5d15ca3b9cf84211ab0884.jpg",
-        villa: "https://cf.bstatic.com/static/img/theme-index/carousel_320x240/card-image-villas_300/dd0d7f8202676306a661aa4f0cf1ffab31286211.jpg",
-        cabin: "https://cf.bstatic.com/static/img/theme-index/carousel_320x240/card-image-chalet_300/8ee014fcc493cb3334e25893a1dee8c6d36ed0ba.jpg"
+        hotel: "https://assets.anantara.com/image/upload/q_auto,f_auto,c_limit,w_1920/media/minor/anantara/images/anantara-peace-haven-tangalle-resort/the-resort/anantara_peace_haven_tangalle_pool_intro_944x510.jpg",
+        guesthouse: "https://www.tourhero.com/en/magazine/wp-content/uploads/2020/11/madulkelle_room_03.jpg",
+        resort: "https://d1bv4heaa2n05k.cloudfront.net/user-images/1508847676152/frangapani-GARY-04000_main_1508847744534.jpeg",
+        villa: "https://www.villainsrilanka.co.uk/wp-content/uploads/2016/10/Villa9-Galle-MAIN.resized.jpg",
+        bunglow: "https://images.squarespace-cdn.com/content/v1/5c94ab21a09a7e443410d831/1588074224112-V47KXNRAN7DO7SWO4MGZ/thotalagala+bungalow+sri+lanka"
     };
     console.log("data", data)
 
@@ -29,20 +31,22 @@ const PropertyType = () => {
                 <span className="propertyTitle">Browse by property type</span>
             </div>
                 <div className="propertyListContainer">
-                    <button className="arrow left" onClick={scrollLeft}>&#9664;</button>
+                    <ArrowBackIosIcon className="arrow left" onClick={scrollLeft} />
+
                     <div className="propertyList" ref={listRef}>
                         {data && data.map((item, i) => (
 
                             <div className="propertyListItem">
                                 <img src={images[item.type]} className='propertyListImg' />
                                 <div className="propertyListTitles">
-                                    <h2>{item.type}</h2>
-                                    <h3>{item.count} {item.type}s</h3>
+                                    <h2>{item.type === 'guesthouse' ? 'Guest House' : item.type}</h2>
+                                    <h3>{item.count} {item.type === 'guesthouse' ? 'Guest House' : item.type}s</h3>
                                 </div>
                             </div>
                         ))}
                     </div>
-                    <button className="arrow right" onClick={scrollRight}>&#9654;</button>
+                    <ArrowForwardIosIcon className="arrow right" onClick={scrollRight} />
+
                 </div></>}
         </div>
     );

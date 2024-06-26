@@ -74,14 +74,14 @@
 
 .propertyListTitles>h2 {
     margin-top: 10px;
-    font-size: 18px;
+    font-size: 20px;
     text-transform: capitalize;
     font-weight: 500;
 }
 
 .propertyListTitles>h3 {
-    font-size: 14px;
-    font-weight: 300;
+    font-size: 16px;
+    font-weight: 380;
     margin-top: 1px;
     text-transform: capitalize;
     /* Slight margin between h2 and h3 */

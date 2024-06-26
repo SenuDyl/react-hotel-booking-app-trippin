@@ -15,6 +15,7 @@ import { useNavigate } from 'react-router-dom';
 import Reserve from '../../components/reserve/Reserve';
 
 const Hotel = () => {
+
     const location = useLocation()
     const id = location.pathname.split("/")[2]
     const [slideNumber, setSlideNumber] = useState(0);
@@ -79,7 +80,22 @@ const Hotel = () => {
             navigate("/login")
         }
     }
+    const rating = data.rating;
+    const maxRating = 5;
 
+    const getStarRating = (rating, maxRating) => {
+        const fullStars = Math.floor(rating);
+        const halfStar = rating % 1 >= 0.5;
+        const emptyStars = maxRating - fullStars - (halfStar ? 1 : 0);
+
+        return (
+            <>
+                {'★'.repeat(fullStars)}
+                {halfStar && '☆'}
+                {'☆'.repeat(emptyStars)}
+            </>
+        );
+    };
     return (
         <div>
             <Navbar />
@@ -105,21 +121,24 @@ const Hotel = () => {
                 )}
             </div>
                 <div className='hotelInfo'>
-                    <button onClick={handleClick} className="bookNow">Book Now</button>
+                    {days > 0 ? <button onClick={handleClick} className="bookNow">Book Now</button> : <button disabled className="bookNow">Book Now</button>}
                     <span className='hotelName'>{data.name}</span>
                     <div className='hotelAddress'>
                         <LocationOnIcon />
                         <span className='hotelLocation'>{data.address}</span>
                     </div>
                     <div>
-                        <span className='hotelDistance'>{data.distance}m from center</span>
-                        <span className='hotelOtherDetails'>This is a great hotel</span>
+                        <span className='hotelDistance'>{data.distance}</span>
+                        <div className='hotelFeatures'>
+
+                            {data.title && <span className='hotelOtherDetails'>{data.title}</span>}
+                            {data.rating && <div className='hotelRatings'>
+                                <div className='stars'>{getStarRating(rating, maxRating)}</div>
+
+                            </div>}
+                        </div>
                     </div>
-                    {data.rating && <div className='hotelRating'>
-                        <span>{data.rating}</span>
-                        <span>⭐</span>
-                        <span>Excellent</span>
-                    </div>}
+
                     <div className='hotelImages'>
                         {photos.map((photo, i) => (
                             <div className='hotelImgWrapper' key={i}>
@@ -138,15 +157,15 @@ const Hotel = () => {
                         </p>
                     </div>
                     <div className="hotelDetailsPrice">
-                        <h1>Perfect for a {days}-night stay!</h1>
+                        <h1>Ideal for a weekend getaway!</h1>
                         <span>
-                            Located in the real heart of Krakow, this property has an
-                            excellent location score of 9.8!
+                            Enjoy a comfortable and relaxing experience with top-notch amenities and exceptional service.
                         </span>
-                        <h2>
-                            <b>${days * data.cheapestPrice * options.room}</b> ({days} nights)
-                        </h2>
-                        <button onClick={handleClick} >Book Now</button>
+                        {days > 0 ?
+                            <h2>
+                                <b>${days * data.cheapestPrice * options.room}</b> ({days} nights)
+                            </h2> : <h3>Please select the number of nights for your stay!</h3>}
+                        {days > 0 ? <button onClick={handleClick} >Book Now</button> : <button disabled>Book Now</button>}
                     </div>
                 </div></>}
             {openModal && <Reserve setOpen={setOpenModal} hotelId={id} />}
