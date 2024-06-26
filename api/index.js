@@ -5,6 +5,7 @@ import authRoute from "./routes/auth.js";
 import hotelRoute from "./routes/hotels.js";
 import roomRoute from "./routes/rooms.js";
 import userRoute from "./routes/users.js";
+import bookingRoute from "./routes/bookings.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
@@ -29,6 +30,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/hotels", hotelRoute);
 app.use("/api/rooms", roomRoute);
 app.use("/api/users", userRoute);
+app.use("/api/bookings", bookingRoute);
 
 //another middleware for error handling purpose
 

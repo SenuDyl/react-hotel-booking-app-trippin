@@ -10,7 +10,8 @@ const UserSchema = new mongoose.Schema({
     gender: { type: String, enum: ['male', 'female', 'other'] },
     address: { type: String },
     country: { type: String },
-    nationality: { type: String }
+    nationality: { type: String },
+    bookings: { type: [String] }
     // Add other fields here
 }, { timestamps: true });
 

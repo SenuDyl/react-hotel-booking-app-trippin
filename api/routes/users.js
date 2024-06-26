@@ -1,5 +1,5 @@
 import express from "express";
-import { updateUser } from "../controllers/user.js";
+import { getUserBookings, updateUser, cancelUserBookings } from "../controllers/user.js";
 import { deleteUser } from "../controllers/user.js";
 import { getUser } from "../controllers/user.js";
 import { getAllUsers } from "../controllers/user.js";
@@ -20,15 +20,16 @@ const router = express.Router();
 // })
 
 // UPDATE
-router.put("/:id",verifyUser, updateUser);
+router.put("/:id", verifyUser, updateUser);
 
 // DELETE
-router.delete("/:id",verifyUser, deleteUser);
+router.delete("/:id", verifyUser, deleteUser);
 
 // GET
-router.get("/:id",verifyUser, getUser);
+router.get("/:id", verifyUser, getUser);
 
 // GET ALL - Fetch all Users
-router.get("/",verifyAdmin, getAllUsers);
-
+router.get("/", verifyAdmin, getAllUsers);
+router.get("/booking/:id", getUserBookings)
+router.put("/booking/:userId/:bookingId", cancelUserBookings)
 export default router;
