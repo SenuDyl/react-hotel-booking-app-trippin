@@ -78,6 +78,7 @@ const Reserve = ({ setOpen, hotelId }) => {
                 )
             );
             console.log("Unavailability updated");
+            setOpen(false);
             const response = await axios.post(`/bookings/${user._id}`, {
                 user: user._id,
                 hotel: hotelId,
@@ -85,7 +86,7 @@ const Reserve = ({ setOpen, hotelId }) => {
                 dates: alldates,
             });
             console.log('booking response', response.data);
-            setOpen(false);
+
 
         } catch (err) {
             console.error("Error during reservation:", err);
