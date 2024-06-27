@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from '../../components/navbar/Navbar';
 import SidePanel from '../../components/sidePanel/SidePanel';
+import BookingCard from '../../components/BookingCard/BookingCard';
 
 
 const Profile = () => {
@@ -8,7 +9,7 @@ const Profile = () => {
         <div>
             <Navbar />
             <SidePanel />
-
+            <BookingCard />
         </div>
     )
 }

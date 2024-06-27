@@ -8,8 +8,8 @@ import List from "./pages/list/List";
 import Hotel from "./pages/hotel/hotel";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
-import Profile from "./pages/profile/Profile";
 import ProfileSummary from "./pages/ProfileSummary/ProfileSummary";
+import UserBookings from "./pages/UserBookings/UserBookings";
 
 function App() {
   return (
@@ -22,6 +22,7 @@ function App() {
         <Route path="/register" element={<Register />} />
 
         <Route path="/profile" element={<ProfileSummary />} />
+        <Route path="/profile/userbookings" element={<UserBookings />} />
       </Routes>
     </BrowserRouter>
   );
