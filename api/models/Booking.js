@@ -20,6 +20,9 @@ const bookingSchema = new mongoose.Schema({
         ref: 'Room',
         required: true
     }],
+    roomNumbers: {
+        type: [String],
+    },
     price: {
         type: Number,
     },

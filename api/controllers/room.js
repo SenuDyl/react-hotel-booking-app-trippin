@@ -107,6 +107,8 @@ export const getRoom = async (req, res, next) => {
         next(err);
     }
 };
+
+
 export const getRooms = async (req, res, next) => {
     try {
         const rooms = await Room.find();

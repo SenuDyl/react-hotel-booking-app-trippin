@@ -12,13 +12,13 @@ import { useNavigate } from "react-router-dom";
 const Reserve = ({ setOpen, hotelId }) => {
     const { user, dispatch } = useAuth();
     const [selectedRooms, setSelectedRooms] = useState([]);
+    const [selectedRoomNumbers, setSelectedRoomNumbers] = useState([]);
     const { data, loading, error } = useFetch(`/hotels/room/${hotelId}`);
     const { dates } = useContext(SearchContext);
     const navigate = useNavigate();
 
     useEffect(() => {
         if (!dates || dates.length === 0) {
-            // Handle case where dates are not available
             console.error("Dates are not available");
         }
     }, [dates]);
@@ -47,12 +47,14 @@ const Reserve = ({ setOpen, hotelId }) => {
         const isFound = roomNumber.unavailableDays.some((date) =>
             alldates.includes(new Date(date).getTime())
         );
+
         return !isFound;
     };
 
     const handleSelect = (e) => {
         const checked = e.target.checked;
         const value = e.target.value;
+
         setSelectedRooms(
             checked
                 ? [...selectedRooms, value]
@@ -69,6 +71,22 @@ const Reserve = ({ setOpen, hotelId }) => {
             console.error("User not authenticated");
             return;
         }
+
+        // Collect the selected room numbers
+        const selectedRoomNumbers = selectedRooms.map((roomId) => {
+            for (const item of data) {
+                for (const roomNumber of item.roomNumbers) {
+                    if (roomNumber._id === roomId) {
+                        return roomNumber.number;
+                    }
+                }
+            }
+            return null;
+        }).filter(Boolean);
+
+        setSelectedRoomNumbers(selectedRoomNumbers);
+        console.log(selectedRoomNumbers);
+
         try {
             await Promise.all(
                 selectedRooms.map((roomId) =>
@@ -77,16 +95,18 @@ const Reserve = ({ setOpen, hotelId }) => {
                     })
                 )
             );
+
             console.log("Unavailability updated");
             setOpen(false);
             const response = await axios.post(`/bookings/${user._id}`, {
                 user: user._id,
                 hotel: hotelId,
                 rooms: selectedRooms,
+                roomNumbers: selectedRoomNumbers, // Include room numbers in the booking
                 dates: alldates,
             });
-            console.log('booking response', response.data);
 
+            console.log('booking response', response.data);
 
         } catch (err) {
             console.error("Error during reservation:", err);
