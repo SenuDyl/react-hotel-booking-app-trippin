@@ -14,6 +14,7 @@ const Navbar = () => {
 
     const handleLogout = () => {
         dispatch({ type: "LOGOUT" });
+        navigate('/');
         setDropdownOpen(false);
     };
     const handleNavigate = () => {

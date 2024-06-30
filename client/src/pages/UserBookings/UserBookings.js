@@ -5,61 +5,59 @@ import BookingCard from '../../components/BookingCard/BookingCard';
 import Footer from '../../components/footer/footer';
 import useAuth from '../../hooks/useAuth';
 import useFetch from '../../hooks/useFetch';
+import './userBookings.css';
 
 const UserBookings = () => {
     const { user } = useAuth();
-    const { data, loading, error } = useFetch(`/users/booking/${user._id}`);
     const [hotelData, setHotelData] = useState([]);
     const [hotelLoading, setHotelLoading] = useState(true);
     const [hotelError, setHotelError] = useState(null);
     const [visibleBookings, setVisibleBookings] = useState([]);
 
+    const { data, loading, error } = useFetch(user ? `/users/booking/${user._id}` : null);
+
     useEffect(() => {
-        if (data) {
+        if (data && user) {
             const fetchHotelData = async () => {
                 try {
                     const hotelPromises = data.map(async (booking) => {
                         const response = await fetch(`/hotels/find/${booking.hotel}`);
-
                         if (!response.ok) throw new Error("Failed to fetch hotel data");
                         return await response.json();
                     });
                     const hotels = await Promise.all(hotelPromises);
                     setHotelData(hotels);
                     setVisibleBookings(data);
-                    console.log(data)
-                    const roomPromises = data.map(async (rooms) => {
-                        const res = await fetch(`/rooms/${rooms.hotel}`);
-                    })
-
                 } catch (error) {
                     setHotelError(error.message);
                 } finally {
                     setHotelLoading(false);
                 }
             };
-
             fetchHotelData();
+        } else {
+            setHotelData([]);
+            setVisibleBookings([]);
+            setHotelLoading(false);
         }
-    }, [data]);
+    }, [data, user]);
 
-
-
-    if (loading) return <div>Loading...</div>;
+    if (!user) return <div>Please log in to view your bookings.</div>;
+    if (loading) return <div>Loading bookings...</div>;
     if (error) return <div>Error: {error}</div>;
     if (hotelLoading) return <div>Loading hotel data...</div>;
     if (hotelError) return <div>Error: {hotelError}</div>;
 
     const handleCancel = (bookingID) => {
         setVisibleBookings(prevBookings => prevBookings.filter(booking => booking._id !== bookingID));
-    }
+    };
 
     return (
-        <div>
+        <div className='contentWrapper'>
             <Navbar />
             <SidePanel />
-
-            {data && hotelData && data.length === hotelData.length && data.map((item, index) => (
+            {visibleBookings.length === 0 && <div className='bookingMessage'>No bookings found!</div>}
+            {visibleBookings && hotelData && visibleBookings.length === hotelData.length && visibleBookings.map((item, index) => (
                 <BookingCard
                     key={`${item._id}-${index}`}
                     BookingID={item._id}
@@ -70,8 +68,7 @@ const UserBookings = () => {
                     onCancel={() => handleCancel(item._id)}
                 />
             ))}
-
-            <Footer />
+            <Footer className='bookingFooter' />
         </div>
     );
 };
