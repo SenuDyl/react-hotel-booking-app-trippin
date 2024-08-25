@@ -1,4 +1,5 @@
 Hotel Booking Application
+
 Overview
 The Hotel Booking Application-"trippin" is a web-based platform that allows users to search for, book, and manage hotel reservations. The application provides a seamless experience for users to explore available hotels, view detailed information, and complete their bookings efficiently.
 
