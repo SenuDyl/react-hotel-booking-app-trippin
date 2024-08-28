@@ -3,9 +3,12 @@ import './PropertyType.css';
 import useFetch from '../../hooks/useFetch';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const PropertyType = () => {
     const { data, loading, error } = useFetch("/hotels/countByType")
+    const [selectedHotel, setSelectedHotel] = useState(null);
     const images = {
         hotel: "https://assets.anantara.com/image/upload/q_auto,f_auto,c_limit,w_1920/media/minor/anantara/images/anantara-peace-haven-tangalle-resort/the-resort/anantara_peace_haven_tangalle_pool_intro_944x510.jpg",
         guesthouse: "https://www.tourhero.com/en/magazine/wp-content/uploads/2020/11/madulkelle_room_03.jpg",
@@ -16,6 +19,7 @@ const PropertyType = () => {
     console.log("data", data)
 
     const listRef = useRef(null);
+    const navigate = useNavigate();
 
     const scrollLeft = () => {
         listRef.current.scrollBy({ left: -300, behavior: 'smooth' });
@@ -23,6 +27,20 @@ const PropertyType = () => {
 
     const scrollRight = () => {
         listRef.current.scrollBy({ left: 300, behavior: 'smooth' });
+    };
+
+    const handleClick = async (hotelType) => {
+        try {
+
+            const response = await fetch(`/hotels/findByType?type=${hotelType}`);
+            if (!response.ok) throw new Error('Failed to fetch hotel data');
+            const hotel = await response.json();
+            console.log('hotels', hotel);
+            setSelectedHotel(hotel);
+            navigate('/hotelList', { state: { selectedHotel: hotel } });
+        } catch (error) {
+            console.error(error.message);
+        }
     };
 
     return (
@@ -36,7 +54,7 @@ const PropertyType = () => {
                     <div className="propertyList" ref={listRef}>
                         {data && data.map((item, i) => (
 
-                            <div className="propertyListItem">
+                            <div className="propertyListItem" onClick={() => handleClick(item.type)}>
                                 <img src={images[item.type]} className='propertyListImg' />
                                 <div className="propertyListTitles">
                                     <h2>{item.type === 'guesthouse' ? 'Guest House' : item.type}</h2>

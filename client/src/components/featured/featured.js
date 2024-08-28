@@ -3,6 +3,7 @@ import './featured.css';
 import useFetch from '../../hooks/useFetch';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { Link } from 'react-router-dom';
 
 const Featured = () => {
     const { data, loading, error } = useFetch("/hotels?featured=true");
@@ -24,6 +25,8 @@ const Featured = () => {
         return 'Poor';
     };
 
+
+
     return (
         <div className="featuredDetails">
             <div className="featuredHeader">
@@ -35,20 +38,22 @@ const Featured = () => {
                 <div className="featuredList" ref={listRef}>
                     {loading ? "Loading" : <>
                         {data.map((item) => (
-                            <div className="featuredListItem" key={item._id}>
-                                <img src={item.photos[0]} alt={item.name} className="featuredListImg" />
-                                <div className="featuredListTitles">
-                                    <h2>{item.name}</h2>
-                                    <h3>{item.city}</h3>
-                                    <h3>Starting from <span className='featuredPrice'>${item.cheapestPrice}</span></h3>
-                                    {item.rating && (
-                                        <div>
-                                            <span className='featuredRatings'>{item.rating}</span>
-                                            <span className='featuredComment'>{getRatingText(parseFloat(item.rating.toString()))}</span>
-                                        </div>
-                                    )}
+                            <Link to={`/hotels/${item._id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                <div className="featuredListItem" key={item._id}>
+                                    <img src={item.photos[0]} alt={item.name} className="featuredListImg" />
+                                    <div className="featuredListTitles">
+                                        <h2>{item.name}</h2>
+                                        <h3>{item.city}</h3>
+                                        <h3>Starting from <span className='featuredPrice'>${item.cheapestPrice}</span></h3>
+                                        {item.rating && (
+                                            <div>
+                                                <span className='featuredRatings'>{item.rating}</span>
+                                                <span className='featuredComment'>{getRatingText(parseFloat(item.rating.toString()))}</span>
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
-                            </div>
+                            </Link>
                         ))}
                     </>}
                 </div>

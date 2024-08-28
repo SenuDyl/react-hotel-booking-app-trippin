@@ -26,13 +26,15 @@ app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 
+// Route handlers for various end points
+
 app.use("/api/auth", authRoute);
 app.use("/api/hotels", hotelRoute);
 app.use("/api/rooms", roomRoute);
 app.use("/api/users", userRoute);
 app.use("/api/bookings", bookingRoute);
 
-//another middleware for error handling purpose
+//Another middleware for error handling purpose
 
 app.use((err, req, res, next) => {
     const errorStatus = err.status || 500;
@@ -47,6 +49,7 @@ app.use((err, req, res, next) => {
 }
 )
 
+//express.json() is a middleware function that parses incoming requests with JSON payloads.
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 

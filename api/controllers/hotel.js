@@ -20,7 +20,7 @@ export const updateHotel = async (req, res, next) => {
         const updatedHotel = await Hotel.findByIdAndUpdate(
             req.params.id,
             { $set: req.body },
-            { new: true }
+            { new: true } // Return the updated document
         );
         // Send OK signal and the new hotel
         res.status(200).json(updatedHotel);
@@ -49,6 +49,27 @@ export const getHotel = async (req, res, next) => {
     }
 };
 
+export const getHotelByCity = async (req, res, next) => {
+    try {
+        const city = req.query.city; // Get the city from the query parameters
+        const hotels = await Hotel.find({ city: city });
+        res.status(200).json(hotels);
+    } catch (error) {
+        next(error);
+    }
+};
+
+export const getHotelByType = async (req, res, next) => {
+    try {
+        const type = req.query.type; // Get the type from the query parameters
+        const hotels = await Hotel.find({ type: type });
+        res.status(200).json(hotels);
+    } catch (error) {
+        next(error);
+    }
+};
+
+// Retrieves all hotels with optional filtering based on price range
 export const getAllHotels = async (req, res, next) => {
     const { min, max, ...others } = req.query;
     try {
@@ -70,6 +91,7 @@ export const countByCity = async (req, res, next) => {
     }
 
     try {
+        // Count the number of hotels for each city concurrently
         const list = await Promise.all(
             cities.map(city => {
                 return Hotel.countDocuments({ city: city });

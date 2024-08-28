@@ -6,8 +6,11 @@ import jwt from 'jsonwebtoken';
 
 export const register = async (req, res, next) => {
     try {
+        // Generate a salt for hashing the password
         const salt = bcrypt.genSaltSync(10);
+        // Hash the user's password
         const hash = bcrypt.hashSync(req.body.password, salt);
+        // Create a new user instance
         const newUser = new User({
             username: req.body.username,
             email: req.body.email,
@@ -17,7 +20,7 @@ export const register = async (req, res, next) => {
         await newUser.save();
         res.status(200).send("User has been created")
     } catch (error) {
-        next(error)
+        next(error) // Pass errors to the error handling middleware
     }
 }
 
@@ -31,7 +34,7 @@ export const login = async (req, res, next) => {
             return next(createError(400, 'Wrong password or username!'));
 
         //Create a token to store verification details
-        const token = jwt.sign({ id: user._id, isAdmin: user.isAdmin }, process.env.JWT)
+        const token = jwt.sign({ id: user._id, isAdmin: user.isAdmin }, process.env.JWT) //The token is signed using a secret key stored in process.env.JWT. This key should be kept secret and not shared with anyone.
 
         //Hide details like password and admin status
         const { password, isAdmin, ...otherDetails } = user._doc;
