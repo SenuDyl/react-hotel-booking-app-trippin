@@ -4,6 +4,8 @@ import './navbar.css';
 import { AuthContext } from '../context/AuthContext';
 
 const Navbar = () => {
+
+    //Represents the currently logged-in user and the dispatch function to update the user state
     const { user, dispatch } = useContext(AuthContext);
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const navigate = useNavigate();

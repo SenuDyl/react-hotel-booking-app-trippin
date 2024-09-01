@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import './propertyList.css';
-import useFetch from '../../hooks/useFetch';
-import { useNavigate } from 'react-router-dom';
+import useFetch from '../../hooks/useFetch'; //Use Fetch custom hook that fetches data from an API
+import { useNavigate } from 'react-router-dom'; //A hook for navigating programmatically within the app
 
 const PropertyList = () => {
+
     const { data, loading, error } = useFetch("/hotels/countByCity?cities=Yala,Kandy,Negombo,Colombo,Galle,Nuwara Eliya,Ella,Jaffna");
     const [selectedHotel, setSelectedHotel] = useState(null);
     const navigate = useNavigate();

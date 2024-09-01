@@ -28,7 +28,7 @@ const Header = ({ type }) => {
         room: 1,
     });
 
-
+    //Fetch hotel data based on the destination entered by the user
     const { data, loading, error, reFetch } = useFetch(`/hotels?city=${destination}`);
 
     const navigate = useNavigate();
@@ -43,6 +43,7 @@ const Header = ({ type }) => {
     const { dispatch } = useContext(SearchContext)
 
     const handleSearch = () => {
+        //Dispatch a search action with the current search criteria
         dispatch({ type: "NEW_SEARCH", payload: { city: destination, dates: dates, options } })
 
         reFetch();

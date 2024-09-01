@@ -45,7 +45,7 @@ export const AuthContextProvider = ({ children }) => {
 
     useEffect(() => {
         localStorage.setItem("user", JSON.stringify(state.user))
-    }, [state.user])
+    }, [state.user])    // update the localStorage whenever the user state changes, ensuring that user data persists across page reloads
     return (
         <AuthContext.Provider value={{
             user: state.user,
