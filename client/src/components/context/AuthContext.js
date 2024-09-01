@@ -7,6 +7,7 @@ const INITIAL_STATE = {
     error: null,
 };
 
+//hold our global authentication state
 export const AuthContext = createContext(INITIAL_STATE);
 
 const AuthReducer = (state, action) => {
@@ -47,6 +48,7 @@ export const AuthContextProvider = ({ children }) => {
         localStorage.setItem("user", JSON.stringify(state.user))
     }, [state.user])    // update the localStorage whenever the user state changes, ensuring that user data persists across page reloads
     return (
+        //Authentication state is made available to all components that need it, without needing to pass props down multiple levels
         <AuthContext.Provider value={{
             user: state.user,
             loading: state.loading,

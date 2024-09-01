@@ -5,6 +5,7 @@ import Footer from '../../components/footer/footer';
 import SearchItem from '../../components/SearchItem/searchItem';
 
 const HotelsPage = () => {
+    //Access the data passed from a previous route
     const location = useLocation();
     const selectedHotel = location.state?.selectedHotel;
     console.log(selectedHotel);

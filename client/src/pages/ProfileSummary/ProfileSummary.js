@@ -18,6 +18,7 @@ const ProfileSummary = () => {
         const fetchUserData = async () => {
             if (user) {
                 try {
+                    //Wait for the asynchronous operation (axios.get) to complete
                     const res = await axios.get(`/users/${user._id}`);
                     setPerson(res.data);
                 } catch (err) {
@@ -64,9 +65,6 @@ const ProfileSummary = () => {
         setIsEditing(true);
         setEditingField(field);
     }
-
-
-    // Inside your ProfileSummary component
 
     const renderField = (field, type = "text", options = null, display) => {
 

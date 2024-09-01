@@ -2,8 +2,8 @@ import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; // Import useHistory from react-router-dom
 import { AuthContext } from '../../components/context/AuthContext';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-import './register.css'; // Import the CSS file
+import { Link } from 'react-router-dom';
+import './register.css';
 
 const Register = () => {
     const [credentials, setCredentials] = useState({
